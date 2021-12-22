@@ -1,12 +1,4 @@
-﻿___TERMS_OF_SERVICE___
-
-By creating or modifying this file you agree to Google Tag Manager's Community
-Template Gallery Developer Terms of Service available at
-https://developers.google.com/tag-manager/gallery-tos (or such other URL as
-Google may provide), as modified from time to time.
-
-
-___INFO___
+﻿___INFO___
 
 {
   "type": "TAG",
@@ -121,16 +113,16 @@ const queryPermission = require('queryPermission');
 const postScriptUrl = 'https://cdn.jsdelivr.net/gh/frenzyopensrc/FrenzyEvents/sendEvents.js'; //provide your script url
 const endpoint = data.apiEndpoint; //provide your endpoint url
 const apiKey = data.apiKey;  
+const method = data.method;
 
 
 //provide your data; data object contains all properties from fields tab of the GTM template
-const requestData = {
+const requestData = [{
   user_id: data.userId,
   query_id: data.queryId,
   sku: data.sku,
-  num_matching: 15,
-  full_description: true
-};
+  event_name: method
+}];
 
  
 //add appropriate permission to inject script from 'https://myPostScriptUrl' url in GTM template's privileges tab
