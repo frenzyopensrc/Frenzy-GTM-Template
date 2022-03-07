@@ -14,5 +14,5 @@
 
 homepage: "https://frenzy.ai"
 versions:
-  - sha: f8181adaa40536818f9e1fc69f425522d55d95f1
-    changeNotes: Initial Version
+  - sha: f67ab831e018a2e12a6dd03dfabe78b4b87fb67d
+    changeNotes: Added custom event
