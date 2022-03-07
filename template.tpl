@@ -55,11 +55,35 @@ ___TEMPLATE_PARAMETERS___
       {
         "value": "add_to_wishlist",
         "displayValue": "Add to wishlist"
+      },
+      {
+        "value": "custom",
+        "displayValue": "Custom"
       }
     ],
     "simpleValueType": true,
     "alwaysInSummary": true,
-    "help": "Choose the event type."
+    "help": "Choose the event type.",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "customEventName",
+        "displayName": "Custom event name",
+        "simpleValueType": true,
+        "enablingConditions": [
+          {
+            "paramName": "method",
+            "paramValue": "custom",
+            "type": "EQUALS"
+          }
+        ],
+        "valueValidators": [
+          {
+            "type": "NON_EMPTY"
+          }
+        ]
+      }
+    ]
   },
   {
     "type": "TEXT",
@@ -68,11 +92,7 @@ ___TEMPLATE_PARAMETERS___
     "simpleValueType": true,
     "help": "Enter the User ID that triggered the event.",
     "alwaysInSummary": true,
-    "valueValidators": [
-      {
-        "type": "NON_EMPTY"
-      }
-    ]
+    "valueValidators": []
   },
   {
     "type": "TEXT",
@@ -113,7 +133,11 @@ const queryPermission = require('queryPermission');
 const postScriptUrl = 'https://cdn.jsdelivr.net/gh/frenzyopensrc/FrenzyEvents/sendEvents.js'; //provide your script url
 const endpoint = data.apiEndpoint; //provide your endpoint url
 const apiKey = data.apiKey;  
-const method = data.method;
+let method = data.method;
+
+if(method ==='custom'){
+  method = data.customEventName;
+}
 
 
 //provide your data; data object contains all properties from fields tab of the GTM template
